@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard – FitTrack</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/config.js"></script>
+	<script src="js/user-data.js" defer></script>
+    <script src="js/dashboard-loader.js" defer></script>
+</head>
+<body class="dashboard-page">
+
+<aside class="sidebar">
+	<div class="sidebar-header">
+        <div class="logo"><i class="fas fa-dumbbell"></i><span>FitTrack</span></div>
+    </div>
+    <div class="sidebar-user">
+        <div class="user-avatar"><i class="fas fa-user"></i></div>
+        <div class="user-info">
+            <h4 id="userName">Nalaganje…</h4>
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="workouts.html"><i class="fas fa-running"></i> Treningi</a>
+        <a href="exercises.html"><i class="fas fa-dumbbell"></i> Vaje</a>
+        <a href="progress.html"><i class="fas fa-chart-line"></i> Napredek</a>
+        <a href="nutrition.html"><i class="fas fa-apple-alt"></i> Prehrana</a>
+        <a href="profile.html"><i class="fas fa-user"></i> Profil</a>
+        <a href="index.html" class="logout"><i class="fas fa-sign-out-alt"></i> Odjava</a>
+    </nav>
+
+    </aside>
+<button id="sidebarToggle" aria-label="Menu">
+    <i class="fas fa-bars"></i>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="main-content">
+    <header class="main-header">
+        <h1 id="dashboardGreeting">Dobrodošli nazaj!</h1>
+        <div class="header-actions">
+            <div class="date-display">
+                <i class="fas fa-calendar-alt"></i> <span id="currentDate"></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#4CAF50;"><i class="fas fa-dumbbell"></i></div>
+            <div class="stat-info stat-card-small"><h3>0</h3><p>Sej ta mesec</p></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#2196F3;"><i class="fas fa-running"></i></div>
+            <div class="stat-info stat-card-small"><h3>0</h3><p>Skupaj sej</p></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#FF9800;"><i class="fas fa-fire"></i></div>
+            <div class="stat-info stat-card-small"><h3>0</h3><p>Kalorije danes</p></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#9C27B0;"><i class="fas fa-weight"></i></div>
+            <div class="stat-info stat-card-small"><h3>—</h3><p>Teža</p></div>
+        </div>
+    </div>
+
+    <section class="recent-workouts">
+        <h2><i class="fas fa-history"></i> Zadnje seje</h2>
+        <div id="recent-sessions-list"></div>
+    </section>
+</main>
+
+<div id="modal-container"></div>
+
+<script src="js/sidebar-toggle.js"></script>
+</body>
+</html>

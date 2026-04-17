@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaje – FitTrack</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/config.js"></script>
+	<script src="js/user-data.js" defer></script>
+    <script src="js/exercises.js" defer></script>
+    <style>
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+        .exercise-card {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 12px;
+            padding: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            transition: border-color 0.2s, transform 0.15s;
+        }
+        .exercise-card:hover { border-color: rgba(76,175,80,0.3); transform: translateY(-2px); }
+        .exercise-card-header { display:flex; justify-content:space-between; align-items:center; }
+        .exercise-card-header h3 { color:#f1f5f9; font-size:1rem; font-weight:600; }
+        .exercise-card-desc { color:#64748b; font-size:0.87rem; line-height:1.4; }
+        .exercise-card-meta { display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; }
+        .difficulty-badge { font-size:0.82rem; font-weight:500; }
+
+        .page-filters { display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:1rem; }
+        .page-filters select,
+        .page-filters input {
+            padding:0.6rem 0.85rem;
+            background:rgba(15,23,42,0.55);
+            border:1px solid rgba(255,255,255,0.1);
+            border-radius:8px;
+            color:#f1f5f9;
+            font-size:0.92rem;
+            min-width:160px;
+        }
+        .page-filters select:focus,
+        .page-filters input:focus { outline:none; border-color:#4CAF50; }
+        .page-filters select option { background:#1e293b; }
+    </style>
+</head>
+<body class="dashboard-page">
+
+<aside class="sidebar">
+	<div class="sidebar-header">
+        <div class="logo"><i class="fas fa-dumbbell"></i><span>FitTrack</span></div>
+    </div>
+    <div class="sidebar-user">
+        <div class="user-avatar"><i class="fas fa-user"></i></div>
+        <div class="user-info"><h4 id="userName">Uporabnik</h4></div>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="workouts.html"><i class="fas fa-running"></i> Treningi</a>
+        <a href="exercises.html" class="active"><i class="fas fa-dumbbell"></i> Vaje</a>
+        <a href="progress.html"><i class="fas fa-chart-line"></i> Napredek</a>
+        <a href="nutrition.html"><i class="fas fa-apple-alt"></i> Prehrana</a>
+        <a href="profile.html"><i class="fas fa-user"></i> Profil</a>
+        <a href="index.html" class="logout"><i class="fas fa-sign-out-alt"></i> Odjava</a>
+    </nav>
+
+    </aside>
+<button id="sidebarToggle" aria-label="Menu">
+    <i class="fas fa-bars"></i>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="main-content">
+    <div class="page-container">
+        <div class="page-header">
+            <h1><i class="fas fa-dumbbell"></i> Knjižnica vaj</h1>
+        </div>
+
+        <div class="page-filters">
+            <select id="muscleGroup">
+                <option value="">Vse mišične skupine</option>
+                <option value="prsi">Prsi</option>
+                <option value="hrbet">Hrbet</option>
+                <option value="noge">Noge</option>
+                <option value="ramena">Ramena</option>
+                <option value="roke">Roke</option>
+                <option value="trebuh">Trebuh</option>
+            </select>
+            <input type="text" id="exerciseSearch" placeholder="Išči vajo…">
+        </div>
+
+        <div id="exercisesGrid" class="exercises-grid"></div>
+    </div>
+</main>
+
+<script src="js/sidebar-toggle.js"></script>
+</body>
+</html>

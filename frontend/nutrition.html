@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prehrana – FitTrack</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/config.js"></script>
+	<script src="js/user-data.js" defer></script>
+    <script src="js/nutrition.js" defer></script>
+</head>
+<body class="dashboard-page">
+
+<aside class="sidebar">
+	<div class="sidebar-header">
+        <div class="logo"><i class="fas fa-dumbbell"></i><span>FitTrack</span></div>
+    </div>
+    <div class="sidebar-user">
+        <div class="user-avatar"><i class="fas fa-user"></i></div>
+        <div class="user-info"><h4 id="userName">Uporabnik</h4></div>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="workouts.html"><i class="fas fa-running"></i> Treningi</a>
+        <a href="exercises.html"><i class="fas fa-dumbbell"></i> Vaje</a>
+        <a href="progress.html"><i class="fas fa-chart-line"></i> Napredek</a>
+        <a href="nutrition.html" class="active"><i class="fas fa-apple-alt"></i> Prehrana</a>
+        <a href="profile.html"><i class="fas fa-user"></i> Profil</a>
+        <a href="index.html" class="logout"><i class="fas fa-sign-out-alt"></i> Odjava</a>
+    </nav>
+
+    </aside>
+<button id="sidebarToggle" aria-label="Menu">
+    <i class="fas fa-bars"></i>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="main-content">
+    <div class="page-container">
+        <div class="page-header">
+            <h1><i class="fas fa-apple-alt"></i> Prehranski dnevnik</h1>
+            <div class="page-header-actions">
+                <button class="btn-primary btn-add-meal"><i class="fas fa-plus"></i> Dodaj obrok</button>
+                <button class="btn-secondary" id="btn-today"><i class="fas fa-calendar-day"></i> Danes</button>
+            </div>
+        </div>
+
+        <div class="date-picker-row">
+            <input type="date" id="nutrition-date">
+        </div>
+
+        <div class="stats-cards">
+            <div class="stat-card-small">
+                <h3 id="total-calories">0</h3>
+                <p>Kalorije (kcal)</p>
+            </div>
+            <div class="stat-card-small">
+                <h3 id="total-protein">0</h3>
+                <p>Beljakovine (g)</p>
+            </div>
+            <div class="stat-card-small">
+                <h3 id="total-carbs">0</h3>
+                <p>Ogljikovi hidrati (g)</p>
+            </div>
+            <div class="stat-card-small">
+                <h3 id="total-fats">0</h3>
+                <p>Maščobe (g)</p>
+            </div>
+        </div>
+
+        <div id="meals-list"></div>
+    </div>
+</main>
+
+<div id="modal-container"></div>
+
+<script src="js/sidebar-toggle.js"></script>
+</body>
+</html>

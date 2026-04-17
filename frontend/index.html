@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FitTrack - Osebni trener v oblaku</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/components.css">
+	<link rel="stylesheet" href="css/auth-popup.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<script src="js/config.js"></script>
+	<script src="js/auth-popup.js" defer></script>
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="nav-container">
+			<div class="logo">
+				<i class="fas fa-dumbbell"></i>
+				<span>FitTrack</span>
+			</div>
+
+			<div class="nav-links">
+				<a href="index.html" class="active"><i class="fas fa-home"></i> Domov</a>
+				<a href="#features"><i class="fas fa-star"></i> Značilnosti</a>
+				<a href="#how-it-works"><i class="fas fa-info-circle"></i> Kako deluje</a>
+				<a href="dashboard.html" class="btn-login"><i class="fas fa-sign-in-alt"></i> Prijava</a>
+				<a href="dashboard.html" class="btn-primary btn-register"><i class="fas fa-user-plus"></i> Registracija</a>
+			</div>
+
+			<button class="mobile-menu-btn" id="navToggle" aria-label="Menu">
+				<i class="fas fa-bars" id="navIcon"></i>
+			</button>
+		</div>
+	</nav>
+
+	<section class="hero">
+		<div class="hero-content">
+			<h1>Vaš osebni trener v oblaku</h1>
+			<p>Sledite svojim treningom, spremljajte napredek in dosegite svoje fitness cilje z enostavno
+				uporabo.</p>
+			<div class="hero-buttons">
+				<a href="#" class="btn-primary btn-large btn-register">Začnite brezplačno</a>
+				<a href="#features" class="btn-secondary btn-large">Oglejte si značilnosti</a>
+			</div>
+		</div>
+		<div class="hero-image">
+			<img src="assets/images/workout-bg.jpg" alt="Fitness trening">
+		</div>
+	</section>
+
+	<section id="features" class="features">
+		<h2>Zakaj izbrati FitTrack?</h2>
+		<div class="features-grid">
+			<div class="feature-card">
+				<div class="feature-icon">
+					<i class="fas fa-dumbbell"></i>
+				</div>
+				<h3>Beleženje treningov</h3>
+				<p>Enostavno beleženje vaj, serij, ponovitev in uteži.</p>
+			</div>
+
+			<div class="feature-card">
+				<div class="feature-icon">
+					<i class="fas fa-chart-line"></i>
+				</div>
+				<h3>Sledenje napredku</h3>
+				<p>Grafični prikaz vašega napredka skozi čas.</p>
+			</div>
+
+			<div class="feature-card">
+				<div class="feature-icon">
+					<i class="fas fa-apple-alt"></i>
+				</div>
+				<h3>Prehranski dnevnik</h3>
+				<p>Beleženje prehrane za popolno sledenje.</p>
+			</div>
+
+			<div class="feature-card">
+				<div class="feature-icon">
+					<i class="fas fa-mobile-alt"></i>
+				</div>
+				<h3>Dostop povsod</h3>
+				<p>Dostopite do svojih podatkov na vseh napravah.</p>
+			</div>
+		</div>
+	</section>
+
+	<section id="how-it-works" class="how-it-works">
+		<h2>Kako deluje?</h2>
+		<div class="steps">
+			<div class="step">
+				<div class="step-number">1</div>
+				<h3>Registrirajte se</h3>
+				<p>Ustvarite svoj brezplačni račun v 30 sekundah.</p>
+			</div>
+			<div class="step">
+				<div class="step-number">2</div>
+				<h3>Dodajte trening</h3>
+				<p>Izberite vaje in zabeležite svoje performance.</p>
+			</div>
+			<div class="step">
+				<div class="step-number">3</div>
+				<h3>Spremljajte napredek</h3>
+				<p>Analizirajte svoje rezultate in se izpopolnjujte.</p>
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="footer-content">
+			<div class="footer-section">
+				<h3>FitTrack</h3>
+				<p>Vaš partner za doseganje fitness ciljev.</p>
+			</div>
+			<div class="footer-section">
+				<h3>Povezave</h3>
+				<a href="index.html">Domov</a>
+				<a href="#features">Značilnosti</a>
+				<a href="dashboard.html">Prijava</a>
+				<a href="dashboard.html">Registracija</a>
+			</div>
+			<div class="footer-section">
+				<h3>Kontakt</h3>
+				<p>info@fittrack.com</p>
+				<p>+386 40 123 456</p>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>&copy; 2024 FitTrack. Maturitetni izdelek.</p>
+		</div>
+	</footer>
+
+<script>
+// mobile-nav-toggle
+document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('navToggle');
+    var icon = document.getElementById('navIcon');
+    var navLinks = document.querySelector('.nav-links');
+    if (!btn || !navLinks) return;
+
+    function openMenu() {
+        navLinks.classList.add('active');
+        icon.className = 'fas fa-times';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        navLinks.classList.remove('active');
+        icon.className = 'fas fa-bars';
+        document.body.style.overflow = '';
+    }
+
+    btn.addEventListener('click', function() {
+        navLinks.classList.contains('active') ? closeMenu() : openMenu();
+    });
+
+    navLinks.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', closeMenu);
+    });
+});
+</script>
+</body>
+
+</html>

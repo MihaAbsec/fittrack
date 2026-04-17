@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moj profil – FitTrack</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/config.js"></script>
+	<script src="js/user-data.js" defer></script>
+    <script src="js/profile.js" defer></script>
+</head>
+<body class="dashboard-page">
+
+<aside class="sidebar">
+	<div class="sidebar-header">
+        <div class="logo"><i class="fas fa-dumbbell"></i><span>FitTrack</span></div>
+    </div>
+    <div class="sidebar-user">
+        <div class="user-avatar"><i class="fas fa-user"></i></div>
+        <div class="user-info"><h4 id="userName">Uporabnik</h4></div>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="workouts.html"><i class="fas fa-running"></i> Treningi</a>
+        <a href="exercises.html"><i class="fas fa-dumbbell"></i> Vaje</a>
+        <a href="progress.html"><i class="fas fa-chart-line"></i> Napredek</a>
+        <a href="nutrition.html"><i class="fas fa-apple-alt"></i> Prehrana</a>
+        <a href="profile.html" class="active"><i class="fas fa-user"></i> Profil</a>
+        <a href="index.html" class="logout"><i class="fas fa-sign-out-alt"></i> Odjava</a>
+    </nav>
+
+    </aside>
+<button id="sidebarToggle" aria-label="Menu">
+    <i class="fas fa-bars"></i>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="main-content">
+    <div class="page-container">
+
+        <div class="page-header">
+            <h1><i class="fas fa-user"></i> Moj profil</h1>
+            <button class="btn-primary" id="btn-save-profile">
+                <span class="btn-text"><i class="fas fa-save"></i> Shrani spremembe</span>
+                <span class="btn-loader" style="display:none"><i class="fas fa-spinner fa-spin"></i></span>
+            </button>
+        </div>
+
+        <div class="error-message" id="profile-error"></div>
+
+        <div class="profile-layout">
+
+            <div class="profile-column">
+                <div class="profile-section">
+                    <h3><i class="fas fa-id-card"></i> Osebni podatki</h3>
+
+                    <div class="form-group">
+                        <label>Polno ime</label>
+                        <input type="text" class="form-input" id="fullName" placeholder="Vaše ime">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>E-pošta</label>
+                            <input type="email" class="form-input" id="email" placeholder="vas@email.com" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Uporabniško ime</label>
+                            <input type="text" class="form-input" id="username" placeholder="npr. matevz99" disabled>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Datum rojstva</label>
+                            <input type="date" class="form-input" id="birthDate">
+                        </div>
+                        <div class="form-group">
+                            <label>Spol</label>
+                            <select class="form-input" id="gender">
+                                <option value="">Izberite…</option>
+                                <option value="moški">Moški</option>
+                                <option value="ženska">Ženska</option>
+                                <option value="drugo">Drugo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-column">
+                <div class="profile-section">
+                    <h3><i class="fas fa-chart-line"></i> Fizični podatki</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Višina (cm)</label>
+                            <input type="number" class="form-input" id="currentHeight" placeholder="180">
+                        </div>
+                        <div class="form-group">
+                            <label>Teža (kg)</label>
+                            <input type="number" class="form-input" id="currentWeight" placeholder="80" step="0.1">
+                        </div>
+                    </div>
+
+                    <div class="bmi-card">
+                        <div class="bmi-row">
+                            <div class="bmi-block">
+                                <span class="bmi-label">BMI</span>
+                                <span class="bmi-value" id="bmi-value">—</span>
+                            </div>
+                            <div class="bmi-block">
+                                <span class="bmi-label">Kategorija</span>
+                                <span class="bmi-cat" id="bmi-category">—</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:1rem;">
+                        <label>Ciljna teža (kg)</label>
+                        <input type="number" class="form-input" id="goalWeight" placeholder="75" step="0.1">
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-card-header">
+                            <span>Cilj: <strong id="goal-weight-display">—</strong></span>
+                            <span class="goal-pct" id="goal-progress-pct">—</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" id="goal-progress-fill" style="width:0%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-section">
+            <h3><i class="fas fa-chart-bar"></i> Statistika računa</h3>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-value" id="stat-total-sessions">0</div>
+                    <div class="stat-label">Sej skupaj</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="stat-training-days">0</div>
+                    <div class="stat-label">Dni vadbe</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="stat-active-months">0</div>
+                    <div class="stat-label">Mesecev aktivno</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="danger-zone">
+            <h3><i class="fas fa-exclamation-triangle"></i> Nevarno območje</h3>
+            <p>Te akcije ne morete preklicati. Bodite previdni.</p>
+            <div class="danger-actions">
+                <button class="btn-danger"><i class="fas fa-trash"></i> Izbriši račun</button>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script src="js/sidebar-toggle.js"></script>
+</body>
+</html>
